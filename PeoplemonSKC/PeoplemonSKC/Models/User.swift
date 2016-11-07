@@ -34,9 +34,13 @@ class User: NetworkModel {
     
     var requestType = RequestType.login
     
-    required init() {}
+    required init() {
+        requestType = .userInfo
+    }
     
     required init(json: JSON) throws {
+        token = try? json.getString(at: Constants.User.token)
+        expiration = try? json.getString(at: Constants.User.expiration)
         id = try? json.getString(at: Constants.User.id)
         email = try? json.getString(at: Constants.User.email)
         hasRegistered = try? json.getBool(at: Constants.User.hasRegistered)
@@ -59,12 +63,18 @@ class User: NetworkModel {
         self.email = email
         self.fullName = fullName
         self.password = password
+        self.apiKey = Constants.apiKey
         requestType = .register
     }
-
+    
     
     func method() -> Alamofire.HTTPMethod {
-        return .get
+        switch requestType {
+        case .userInfo:
+            return .get
+        default:
+            return .post
+        }
     }
     
     func path() -> String {
@@ -87,11 +97,12 @@ class User: NetworkModel {
         case .login:
             params[Constants.User.email] = email as AnyObject?
             params[Constants.User.password] = password as AnyObject?
+            params[Constants.User.grantType] = Constants.User.password as AnyObject?
         case .register:
             params[Constants.User.email] = email as AnyObject?
             params[Constants.User.fullName] = fullName as AnyObject?
             params[Constants.User.password] = password as AnyObject?
-            params[Constants.User.apiKey] = apiKey as AnyObject?
+            params[Constants.User.apiKey] = self.apiKey as AnyObject?
         default:
             break
         }

@@ -17,7 +17,7 @@
 import UIKit
 
 struct Constants {
-    static let apiKey = "iOSandroid301november2016"
+    static let apiKey = "iOS301november2016"
     static let keychainIdentifier = "PeoplemonKeychain"
     static let authToken = "authToken"
     static let authTokenExpireDate = "authTokenExpireDate"
@@ -39,8 +39,9 @@ struct Constants {
         static let lastCheckInDateTime = "LastCheckInDateTime"
         static let apiKey = "ApiKey"
         static let password = "Password"
-        static let token = "token"
+        static let token = "access_token"
         static let expiration = "expiration"
+        static let grantType = "grant_type"
     }
     
     struct Person {

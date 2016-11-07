@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2E7DCC681DCFED6800EEBA85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DCC671DCFED6800EEBA85 /* AppDelegate.swift */; };
 		2E7DCC6A1DCFED6800EEBA85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DCC691DCFED6800EEBA85 /* ViewController.swift */; };
-		2E7DCC6D1DCFED6800EEBA85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E7DCC6B1DCFED6800EEBA85 /* Main.storyboard */; };
 		2E7DCC6F1DCFED6800EEBA85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7DCC6E1DCFED6800EEBA85 /* Assets.xcassets */; };
 		2E7DCC721DCFED6800EEBA85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E7DCC701DCFED6800EEBA85 /* LaunchScreen.storyboard */; };
 		2E7DCC7B1DCFEF3300EEBA85 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DCC7A1DCFEF3300EEBA85 /* NetworkModel.swift */; };
@@ -18,6 +17,15 @@
 		2E7DCC851DCFF12A00EEBA85 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DCC841DCFF12A00EEBA85 /* Constants.swift */; };
 		2E7DCC881DCFF97000EEBA85 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DCC871DCFF97000EEBA85 /* User.swift */; };
 		2E7DCC8A1DCFFF6300EEBA85 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DCC891DCFFF6300EEBA85 /* Person.swift */; };
+		2EEBFE811DD0CBCC0032A186 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EEBFE801DD0CBCC0032A186 /* Login.storyboard */; };
+		2EEBFE841DD0CC520032A186 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEBFE831DD0CC520032A186 /* LoginViewController.swift */; };
+		2EEBFE861DD0CD6F0032A186 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEBFE851DD0CD6F0032A186 /* RegisterViewController.swift */; };
+		2EEBFE881DD0CF1B0032A186 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEBFE871DD0CF1B0032A186 /* Utils.swift */; };
+		2EEBFE8A1DD0D0F70032A186 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEBFE891DD0D0F70032A186 /* UserStore.swift */; };
+		2EEBFE8C1DD0D5AE0032A186 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEBFE8B1DD0D5AE0032A186 /* MapViewController.swift */; };
+		2EEBFE8E1DD0DF120032A186 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EEBFE8D1DD0DF120032A186 /* Main.storyboard */; };
+		2EEBFE901DD0E6C70032A186 /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEBFE8F1DD0E6C70032A186 /* MapPin.swift */; };
+		2EEBFE921DD0FE690032A186 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEBFE911DD0FE690032A186 /* MapKit.framework */; };
 		B947AA53778961D3834EE75B /* Pods_PeoplemonSKC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4C14CB9E2CE4F4D23A3E6A /* Pods_PeoplemonSKC.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,7 +33,6 @@
 		2E7DCC641DCFED6800EEBA85 /* PeoplemonSKC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeoplemonSKC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E7DCC671DCFED6800EEBA85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E7DCC691DCFED6800EEBA85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2E7DCC6C1DCFED6800EEBA85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2E7DCC6E1DCFED6800EEBA85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E7DCC711DCFED6800EEBA85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E7DCC731DCFED6800EEBA85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,6 +42,16 @@
 		2E7DCC841DCFF12A00EEBA85 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Components/Constants.swift; sourceTree = "<group>"; };
 		2E7DCC871DCFF97000EEBA85 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		2E7DCC891DCFFF6300EEBA85 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Person.swift; path = Models/Person.swift; sourceTree = "<group>"; };
+		2EEBFE801DD0CBCC0032A186 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		2EEBFE831DD0CC520032A186 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewControllers/LoginViewController.swift; sourceTree = "<group>"; };
+		2EEBFE851DD0CD6F0032A186 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = ViewControllers/RegisterViewController.swift; sourceTree = "<group>"; };
+		2EEBFE871DD0CF1B0032A186 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Components/Utils.swift; sourceTree = "<group>"; };
+		2EEBFE891DD0D0F70032A186 /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserStore.swift; path = Components/UserStore.swift; sourceTree = "<group>"; };
+		2EEBFE8B1DD0D5AE0032A186 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = ViewControllers/MapViewController.swift; sourceTree = "<group>"; };
+		2EEBFE8D1DD0DF120032A186 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		2EEBFE8F1DD0E6C70032A186 /* MapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
+		2EEBFE911DD0FE690032A186 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		2EEBFE931DD0FE750032A186 /* PeoplemonSKC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PeoplemonSKC.entitlements; sourceTree = "<group>"; };
 		4B4C14CB9E2CE4F4D23A3E6A /* Pods_PeoplemonSKC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeoplemonSKC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F4E94A2EE913C6DA812D246 /* Pods-PeoplemonSKC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplemonSKC.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplemonSKC/Pods-PeoplemonSKC.release.xcconfig"; sourceTree = "<group>"; };
 		96F156057868A9D7F2872A6D /* Pods-PeoplemonSKC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplemonSKC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplemonSKC/Pods-PeoplemonSKC.debug.xcconfig"; sourceTree = "<group>"; };
@@ -45,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EEBFE921DD0FE690032A186 /* MapKit.framework in Frameworks */,
 				B947AA53778961D3834EE75B /* Pods_PeoplemonSKC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +73,7 @@
 		1DD8FC98816E41D4029860C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2EEBFE911DD0FE690032A186 /* MapKit.framework */,
 				4B4C14CB9E2CE4F4D23A3E6A /* Pods_PeoplemonSKC.framework */,
 			);
 			name = Frameworks;
@@ -81,15 +100,18 @@
 		2E7DCC661DCFED6800EEBA85 /* PeoplemonSKC */ = {
 			isa = PBXGroup;
 			children = (
+				2EEBFE931DD0FE750032A186 /* PeoplemonSKC.entitlements */,
+				2EEBFE821DD0CC370032A186 /* View Controllers */,
+				2EEBFE7F1DD0CBA70032A186 /* Storyboards */,
 				2E7DCC861DCFF95900EEBA85 /* Models */,
 				2E7DCC831DCFF10A00EEBA85 /* Components */,
 				2E7DCC791DCFEF0100EEBA85 /* Networking */,
 				2E7DCC671DCFED6800EEBA85 /* AppDelegate.swift */,
 				2E7DCC691DCFED6800EEBA85 /* ViewController.swift */,
-				2E7DCC6B1DCFED6800EEBA85 /* Main.storyboard */,
 				2E7DCC6E1DCFED6800EEBA85 /* Assets.xcassets */,
 				2E7DCC701DCFED6800EEBA85 /* LaunchScreen.storyboard */,
 				2E7DCC731DCFED6800EEBA85 /* Info.plist */,
+				2EEBFE8F1DD0E6C70032A186 /* MapPin.swift */,
 			);
 			path = PeoplemonSKC;
 			sourceTree = "<group>";
@@ -108,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				2E7DCC841DCFF12A00EEBA85 /* Constants.swift */,
+				2EEBFE871DD0CF1B0032A186 /* Utils.swift */,
+				2EEBFE891DD0D0F70032A186 /* UserStore.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -119,6 +143,25 @@
 				2E7DCC891DCFFF6300EEBA85 /* Person.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		2EEBFE7F1DD0CBA70032A186 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				2EEBFE801DD0CBCC0032A186 /* Login.storyboard */,
+				2EEBFE8D1DD0DF120032A186 /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		2EEBFE821DD0CC370032A186 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2EEBFE831DD0CC520032A186 /* LoginViewController.swift */,
+				2EEBFE851DD0CD6F0032A186 /* RegisterViewController.swift */,
+				2EEBFE8B1DD0D5AE0032A186 /* MapViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		62E5AF45DE1968552DD16343 /* Pods */ = {
@@ -165,7 +208,16 @@
 				TargetAttributes = {
 					2E7DCC631DCFED6800EEBA85 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = N33QS9B626;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -192,9 +244,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EEBFE811DD0CBCC0032A186 /* Login.storyboard in Resources */,
 				2E7DCC721DCFED6800EEBA85 /* LaunchScreen.storyboard in Resources */,
 				2E7DCC6F1DCFED6800EEBA85 /* Assets.xcassets in Resources */,
-				2E7DCC6D1DCFED6800EEBA85 /* Main.storyboard in Resources */,
+				2EEBFE8E1DD0DF120032A186 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,11 +306,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EEBFE841DD0CC520032A186 /* LoginViewController.swift in Sources */,
+				2EEBFE861DD0CD6F0032A186 /* RegisterViewController.swift in Sources */,
+				2EEBFE901DD0E6C70032A186 /* MapPin.swift in Sources */,
 				2E7DCC7B1DCFEF3300EEBA85 /* NetworkModel.swift in Sources */,
 				2E7DCC6A1DCFED6800EEBA85 /* ViewController.swift in Sources */,
 				2E7DCC7D1DCFEFF500EEBA85 /* WebServices.swift in Sources */,
 				2E7DCC7F1DCFF02B00EEBA85 /* WebServicesExtension.swift in Sources */,
+				2EEBFE8C1DD0D5AE0032A186 /* MapViewController.swift in Sources */,
+				2EEBFE8A1DD0D0F70032A186 /* UserStore.swift in Sources */,
 				2E7DCC681DCFED6800EEBA85 /* AppDelegate.swift in Sources */,
+				2EEBFE881DD0CF1B0032A186 /* Utils.swift in Sources */,
 				2E7DCC851DCFF12A00EEBA85 /* Constants.swift in Sources */,
 				2E7DCC8A1DCFFF6300EEBA85 /* Person.swift in Sources */,
 				2E7DCC881DCFF97000EEBA85 /* User.swift in Sources */,
@@ -267,14 +326,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2E7DCC6B1DCFED6800EEBA85 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2E7DCC6C1DCFED6800EEBA85 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2E7DCC701DCFED6800EEBA85 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -384,6 +435,8 @@
 			baseConfigurationReference = 96F156057868A9D7F2872A6D /* Pods-PeoplemonSKC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PeoplemonSKC/PeoplemonSKC.entitlements;
+				DEVELOPMENT_TEAM = N33QS9B626;
 				INFOPLIST_FILE = PeoplemonSKC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.interapt.PeoplemonSKC;
@@ -397,6 +450,8 @@
 			baseConfigurationReference = 8F4E94A2EE913C6DA812D246 /* Pods-PeoplemonSKC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PeoplemonSKC/PeoplemonSKC.entitlements;
+				DEVELOPMENT_TEAM = N33QS9B626;
 				INFOPLIST_FILE = PeoplemonSKC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.interapt.PeoplemonSKC;

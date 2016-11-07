@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9X9-KW-Z0h">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="GX5-1x-gol">
+            <objects>
+                <viewController id="1nt-rj-xk8" customClass="MapViewController" customModule="PeoplemonSKC" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fkt-1E-Hp7"/>
+                        <viewControllerLayoutGuide type="bottom" id="gZ1-Kk-RuB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ryu-s6-RwV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="I3F-8h-TIp">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LxT-6N-fRU"/>
+                    <connections>
+                        <outlet property="mapView" destination="I3F-8h-TIp" id="sVH-ht-mi9"/>
+                        <segue destination="iAV-kM-LDB" kind="presentation" identifier="PresentLoginNoAnimation" animates="NO" id="WGb-RI-lAN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i80-or-rT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1311.2" y="53.523238380809602"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="Z8B-Vq-Jfs">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="iAV-kM-LDB" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PPL-qw-F62" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1311" y="486"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QZh-d8-jUF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9X9-KW-Z0h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KKO-7W-djg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1nt-rj-xk8" kind="relationship" relationship="rootViewController" id="Xab-oQ-fVR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hio-IN-OVR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="372" y="53.523238380809602"/>
+        </scene>
+    </scenes>
+</document>
