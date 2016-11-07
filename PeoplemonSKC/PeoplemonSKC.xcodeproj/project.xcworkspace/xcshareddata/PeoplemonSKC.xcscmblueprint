@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8E21968C7207AB325D38D38A5507DE12107694F9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DE4B865F96928A6089647FD9CB43EA044CDF0B12" : 9223372036854775807,
+    "8E21968C7207AB325D38D38A5507DE12107694F9" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "CB918DF9-D2CE-4DCE-8DBB-EE6B514D554E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DE4B865F96928A6089647FD9CB43EA044CDF0B12" : "..",
+    "8E21968C7207AB325D38D38A5507DE12107694F9" : "peoplemonskc\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PeoplemonSKC",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PeoplemonSKC\/PeoplemonSKC.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sean-crowl\/peoplemonskc.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8E21968C7207AB325D38D38A5507DE12107694F9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/IzaakPrats\/teky1-swift151.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DE4B865F96928A6089647FD9CB43EA044CDF0B12"
+    }
+  ]
+}
