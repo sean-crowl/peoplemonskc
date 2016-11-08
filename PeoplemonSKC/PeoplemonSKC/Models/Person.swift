@@ -33,7 +33,7 @@ class Person: NetworkModel {
     required init() {}
     
     required init(json: JSON) throws {
-        self.userID = try? json.getString(at: Constants.Person.userID)
+        self.userID = try? json.getString(at: Constants.Person.userId)
         self.userName = try? json.getString(at: Constants.Person.userName)
         self.avatarBase64 = try? json.getString(at: Constants.Person.avatarBase64)
         self.longitude = try? json.getDouble(at: Constants.Person.longitude)

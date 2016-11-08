@@ -124,7 +124,7 @@ class WebServices: NSObject {
                 urlRequest.httpMethod = model.method().rawValue
                 
                 if let token = WebServices.shared.authToken {
-                    urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+                    urlRequest.setValue("bearer \(token)", forHTTPHeaderField: "Authorization")
                 }
                 
                 if let params = model.toDictionary() {

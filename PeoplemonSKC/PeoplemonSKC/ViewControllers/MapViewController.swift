@@ -73,6 +73,14 @@ class MapViewController: UIViewController {
      }
      */
     
+    // MARK: - IBActions
+    @IBAction func logoutClicked(_ sender: Any) {
+        UserStore.shared.logout {
+            self.performSegue(withIdentifier:"PresentLogin", sender: self)
+        }
+    }
+    
+    
     
     
 }

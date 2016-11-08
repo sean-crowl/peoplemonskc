@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9X9-KW-Z0h">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
+        <!--Title-->
         <scene sceneID="GX5-1x-gol">
             <objects>
                 <viewController id="1nt-rj-xk8" customClass="MapViewController" customModule="PeoplemonSKC" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <viewControllerLayoutGuide type="bottom" id="gZ1-Kk-RuB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ryu-s6-RwV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="I3F-8h-TIp">
@@ -28,10 +28,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="LxT-6N-fRU"/>
+                    <navigationItem key="navigationItem" title="Title" id="i8c-GV-LwF">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="dZb-5e-Pxe">
+                            <connections>
+                                <action selector="logoutClicked:" destination="1nt-rj-xk8" id="SMK-8L-bOo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="I3F-8h-TIp" id="sVH-ht-mi9"/>
                         <segue destination="iAV-kM-LDB" kind="presentation" identifier="PresentLoginNoAnimation" animates="NO" id="WGb-RI-lAN"/>
+                        <segue destination="iAV-kM-LDB" kind="presentation" identifier="PresentLogin" id="z95-UR-Ehf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i80-or-rT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -44,7 +51,7 @@
                 <viewControllerPlaceholder storyboardName="Login" id="iAV-kM-LDB" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPL-qw-F62" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1311" y="486"/>
+            <point key="canvasLocation" x="1312" y="495"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QZh-d8-jUF">
@@ -65,4 +72,7 @@
             <point key="canvasLocation" x="372" y="53.523238380809602"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="z95-UR-Ehf"/>
+    </inferredMetricsTieBreakers>
 </document>
