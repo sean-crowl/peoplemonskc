@@ -37,7 +37,7 @@
                     <navigationItem key="navigationItem" title="Title" id="i8c-GV-LwF">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="dZb-5e-Pxe">
                             <connections>
-                                <action selector="logoutClicked:" destination="1nt-rj-xk8" id="SMK-8L-bOo"/>
+                                <action selector="logoutClickedWithSender:" destination="1nt-rj-xk8" id="QlI-zo-LfV"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="tz6-4f-jVz">

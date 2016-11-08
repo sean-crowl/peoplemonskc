@@ -12,10 +12,9 @@ import MapKit
 class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
-    
     let locationManager = CLLocationManager()
-    let latitudeDelta = 0.020
-    let longitudeDelta = 0.020
+    let latitudeDelta = 0.005
+    let longitudeDelta = 0.005
     
     var annotations: [MapPin] = []
     var overlay: MKOverlay?
@@ -23,26 +22,13 @@ class MapViewController: UIViewController {
     
     var timer: Timer?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.distanceFilter = kCLDistanceFilterNone
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        mapView.showsUserLocation = true
-        locationManager.startUpdatingLocation()
-        
-        
-        mapView.delegate = self
-        definesPresentationContext = true
-        
-        // Do any additional setup after loading the view.
+    enum SegueIdentifier: String {
+        case PresentLoginNoAnimation
+        case PresentLogin
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -56,39 +42,25 @@ class MapViewController: UIViewController {
         
         mapView.delegate = self
         
-        
-        if !WebServices.shared.userAuthTokenExists() || WebServices.shared.userAuthTokenExpired() {
-            
-            performSegue(withIdentifier: "PresentLoginNoAnimation", sender: self)
-        }
-        
+        UserStore.shared.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    // MARK: - IBActions
-    @IBAction func logoutClicked(_ sender: Any) {
-        UserStore.shared.logout {
-            self.performSegue(withIdentifier:"PresentLogin", sender: self)
+    override func viewDidAppear(_ animated: Bool) {
+        if !WebServices.shared.userAuthTokenExists() || WebServices.shared.userAuthTokenExpired() {
+            performSegue(withIdentifier: "PresentLoginNoAnimation", sender: self)
+        } else {
+            let infoUser = User()
+            WebServices.shared.getObject(infoUser, completion: { (user, error) in
+                if let user = user {
+                    UserStore.shared.user = user
+                }
+            })
         }
     }
-    
-    
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
@@ -125,6 +97,14 @@ class MapViewController: UIViewController {
     func stopTimer() {
         timer?.invalidate()
         timer = nil
+    }
+    
+    
+    // MARK: - IBActions
+    @IBAction func logoutClicked(sender: AnyObject) {
+        UserStore.shared.logout {
+            self.performSegue(withIdentifier: "PresentLogin", sender: self)
+        }
     }
 }
 
@@ -185,5 +165,15 @@ extension MapViewController: MKMapViewDelegate {
         renderer.lineWidth = 5.0
         renderer.lineCap = CGLineCap.round
         return renderer
+    }
+}
+
+// MARK: - UserStoreDelegate
+extension MapViewController: UserStoreDelegate {
+    func userLoggedIn() {
+        NotificationCenter.default.addObserver(self, selector: #selector(stopTimer), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(startTimer), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        stopTimer()
+        startTimer()
     }
 }

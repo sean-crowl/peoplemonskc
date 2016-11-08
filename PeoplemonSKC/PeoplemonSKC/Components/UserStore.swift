@@ -8,10 +8,21 @@
 
 import Foundation
 
+protocol UserStoreDelegate: class {
+    func userLoggedIn()
+}
+
 class UserStore {
     static let shared = UserStore()
     
-    var user: User?
+    var user: User? {
+        didSet {
+            if let _ = user {
+                delegate?.userLoggedIn()
+            }
+        }
+    }
+    weak var delegate: UserStoreDelegate?
     
     func login(_ loginUser: User, completion:@escaping (_ success: Bool, _ error: String?) -> Void) {
         WebServices.shared.authUser(loginUser) { (user, error) -> () in
