@@ -6,20 +6,19 @@
 //  Copyright © 2016 Interapt. All rights reserved.
 //
 
+import UIKit
 import MapKit
 
 class MapPin: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
-    var title: String?
-    var subtitle: String?
-    var phone: String?
-    var url: URL?
+    var person: Person?
     
-    init(coordinate: CLLocationCoordinate2D, title: String?, address: String?, phone: String?, url: URL?) {
-        self.coordinate = coordinate
-        self.title = title
-        self.subtitle = address
-        self.phone = phone
-        self.url = url
+    init(person: Person) {
+        self.person = person
+        if let lat = person.latitude, let long = person.longitude {
+            self.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        } else {
+            self.coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+        }
     }
 }

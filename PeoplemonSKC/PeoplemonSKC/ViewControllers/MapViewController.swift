@@ -14,20 +14,14 @@ class MapViewController: UIViewController {
     
     
     let locationManager = CLLocationManager()
-    var updatingLocation = true
-    let latitudeDelta = 0.2
-    let longitudeDelta = 0.2
+    let latitudeDelta = 0.020
+    let longitudeDelta = 0.020
     
     var annotations: [MapPin] = []
-    
-    let transitionManager = CLLocationManager()
-    
     var overlay: MKOverlay?
-    var route: MKRoute?
+    var firstLocation = true
     
-    var directionsView: UIView!
-    var directionsTableView: UITableView!
-    var showingDirections = false
+    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +43,19 @@ class MapViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        mapView.showsUserLocation = true
+        mapView.isZoomEnabled = false
+        mapView.isScrollEnabled = false
+        locationManager.startUpdatingLocation()
+        
+        mapView.delegate = self
+        
         
         if !WebServices.shared.userAuthTokenExists() || WebServices.shared.userAuthTokenExpired() {
             
@@ -83,6 +90,42 @@ class MapViewController: UIViewController {
     
     
     
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+        stopTimer()
+    }
+    
+    func loadMap() {
+        if let coordinate = locationManager.location?.coordinate {
+            let checkIn = Person(coordinate: coordinate)
+            WebServices.shared.postObject(checkIn, completion: { (object, error) in
+                
+            })
+        }
+        
+        let nearby = Person(radiusInMeters: Double(Constants.radiusInMeters))
+        WebServices.shared.getObjects(nearby) { (objects, error) in
+            if let objects = objects {
+                let oldAnnotations = self.annotations
+                self.annotations = []
+                for person in objects {
+                    let pin = MapPin(person: person)
+                    self.annotations.append(pin)
+                }
+                self.mapView.addAnnotations(self.annotations)
+                self.mapView.removeAnnotations(oldAnnotations)
+            }
+        }
+    }
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(loadMap), userInfo: nil, repeats: true)
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
 }
 
 // MARK: - CLLocationManagerDelegate
@@ -91,9 +134,8 @@ extension MapViewController: CLLocationManagerDelegate {
         let location = locations.last!
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpanMake(latitudeDelta, longitudeDelta))
-        mapView.setRegion(region, animated: true)
-        updatingLocation = false
-        locationManager.stopUpdatingLocation()
+        
+        self.mapView.setRegion(region, animated: true)
     }
 }
 
@@ -104,66 +146,44 @@ extension MapViewController: MKMapViewDelegate {
             return nil
         }
         
-        let reuseID = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID) as? MKPinAnnotationView
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
-            pinView!.canShowCallout = true
-            pinView!.animatesDrop = true
-            
-            let leftButton = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-            leftButton.setImage(#imageLiteral(resourceName: "info"), for: .normal)
-            pinView!.leftCalloutAccessoryView = leftButton
-            
-            let rightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-            rightButton.setImage(#imageLiteral(resourceName: "directions"), for: .normal)
-            pinView!.rightCalloutAccessoryView = rightButton
-            
-            if let mapPin = annotation as? MapPin {
-                let addressLabel = UILabel()
-                addressLabel.numberOfLines = 0
-                addressLabel.font = UIFont.systemFont(ofSize: 12)
-                addressLabel.text = mapPin.subtitle
-                addressLabel.sizeToFit()
-                addressLabel.preferredMaxLayoutWidth = 240
-                
-                var labels = [addressLabel]
-                
-                if let phone = mapPin.phone {
-                    let phoneLabel = UILabel()
-                    phoneLabel.font = UIFont.systemFont(ofSize: 12)
-                    phoneLabel.text = phone
-                    labels.append(phoneLabel)
-                }
-                
-                let stackView = UIStackView(arrangedSubviews: labels)
-                stackView.axis = .vertical
-                stackView.alignment = .leading
-                stackView.distribution = .equalSpacing
-                stackView.spacing = 4
-                
-                pinView!.detailCalloutAccessoryView = stackView
-                
-                pinView!.leftCalloutAccessoryView!.tag = 0
-                pinView!.rightCalloutAccessoryView!.tag = 1
-            }
-            
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = false
+            pinView!.animatesDrop = false
         } else {
-            pinView?.annotation = annotation
+            pinView!.annotation = annotation
         }
         
         return pinView
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let mapPin = view.annotation as? MapPin, let person = mapPin.person, let name = person.userName, let userId = person.userID {
+            let alert = UIAlertController(title: "Catch User", message: "Catch \(name)?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Catch", style: .default, handler: { (action) in
+                let catchPerson = Person(userID: userId, radiusInMeters: Double(Constants.radiusInMeters))
+                WebServices.shared.postObject(catchPerson, completion: { (object, error) in
+                    if let error = error {
+                        self.present(Utils.createAlert(message: error), animated: true, completion: nil)
+                    } else {
+                        self.present(Utils.createAlert(message: "User Caught"), animated: true, completion: nil)
+                    }
+                })
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         self.overlay = overlay
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+        renderer.strokeColor = UIColor.blue
         renderer.lineWidth = 5.0
-        renderer.lineCap = .round
+        renderer.lineCap = CGLineCap.round
         return renderer
     }
 }
-
-

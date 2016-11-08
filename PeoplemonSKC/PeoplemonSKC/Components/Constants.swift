@@ -13,6 +13,7 @@ struct Constants {
     public static let authTokenExpireDate = "authTokenExpireDate"
     public static let authToken = "authToken"
     static let apiKey = "iOSandroid301november2016"
+    static let radiusInMeters = 50
     
     struct JSON {
         static let unknownError = "An Unknown Error Has Occurred"
