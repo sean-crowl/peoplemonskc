@@ -27,14 +27,14 @@ struct Constants {
         static let password = "password"
         static let apiKey = "ApiKey"
         static let username = "userName"
-        static let grantType = "grant_type"
-        static let token = "access_token"
-        static let expirationDate = ".expires"
         static let hasRegistered = "HasRegistered"
         static let loginProvider = "LoginProvider"
         static let avatarBase64 = "AvatarBase64"
         static let latitude = "LastCheckInLatitude"
         static let longitude = "LastCheckInLongitude"
+        static let grantType = "grant_type"
+        static let token = "access_token"
+        static let expirationDate = ".expires"
     }
     
     struct Person {

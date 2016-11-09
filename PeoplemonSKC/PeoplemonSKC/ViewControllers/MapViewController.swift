@@ -13,8 +13,9 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     let locationManager = CLLocationManager()
-    let latitudeDelta = 0.005
-    let longitudeDelta = 0.005
+    var updatingLocation = true
+    let latitudeDelta = 0.002
+    let longitudeDelta = 0.002
     
     var annotations: [MapPin] = []
     var overlay: MKOverlay?
@@ -86,7 +87,7 @@ class MapViewController: UIViewController {
     }
     
     func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(loadMap), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(loadMap), userInfo: nil, repeats: true)
     }
     
     func stopTimer() {
@@ -109,8 +110,8 @@ extension MapViewController: CLLocationManagerDelegate {
         let location = locations.last!
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpanMake(latitudeDelta, longitudeDelta))
-        
-        self.mapView.setRegion(region, animated: true)
+        mapView.setRegion(region, animated: true)
+        updatingLocation = true
     }
 }
 
@@ -148,15 +149,15 @@ extension MapViewController: MKMapViewDelegate {
                     }
                 })
             }))
-            
+            alert.addAction(UIAlertAction(title: "Do Not Catch", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
     
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+   func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         self.overlay = overlay
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = UIColor.blue
+        renderer.strokeColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
         renderer.lineWidth = 5.0
         renderer.lineCap = CGLineCap.round
         return renderer
