@@ -22,11 +22,6 @@ class MapViewController: UIViewController {
     
     var timer: Timer?
     
-    enum SegueIdentifier: String {
-        case PresentLoginNoAnimation
-        case PresentLogin
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -101,7 +96,7 @@ class MapViewController: UIViewController {
     
     
     // MARK: - IBActions
-    @IBAction func logoutClicked(sender: AnyObject) {
+    @IBAction func logout(sender: AnyObject) {
         UserStore.shared.logout {
             self.performSegue(withIdentifier: "PresentLogin", sender: self)
         }
@@ -141,10 +136,10 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        if let mapPin = view.annotation as? MapPin, let person = mapPin.person, let name = person.userName, let userId = person.userID {
+        if let mapPin = view.annotation as? MapPin, let person = mapPin.person, let name = person.userName, let userId = person.userId {
             let alert = UIAlertController(title: "Catch User", message: "Catch \(name)?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Catch", style: .default, handler: { (action) in
-                let catchPerson = Person(userID: userId, radiusInMeters: Double(Constants.radiusInMeters))
+                let catchPerson = Person(userId: userId, radiusInMeters: Double(Constants.radiusInMeters))
                 WebServices.shared.postObject(catchPerson, completion: { (object, error) in
                     if let error = error {
                         self.present(Utils.createAlert(message: error), animated: true, completion: nil)

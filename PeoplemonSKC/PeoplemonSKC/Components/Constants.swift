@@ -13,7 +13,7 @@ struct Constants {
     public static let authTokenExpireDate = "authTokenExpireDate"
     public static let authToken = "authToken"
     static let apiKey = "iOSandroid301november2016"
-    static let radiusInMeters = 50
+    static let radiusInMeters = 100
     
     struct JSON {
         static let unknownError = "An Unknown Error Has Occurred"
@@ -46,6 +46,14 @@ struct Constants {
         static let radiusInMeters = "radiusInMeters"
         static let caughtUserId = "CaughtUserId"
         static let avatarBase64 = "AvatarBase64"
+    }
+}
+
+enum Images : String {
+    case Avatar
+    
+    func image() -> UIImage {
+        return UIImage(named: self.rawValue)!
     }
 }
 

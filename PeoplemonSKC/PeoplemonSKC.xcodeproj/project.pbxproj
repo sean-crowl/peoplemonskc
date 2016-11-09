@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2E7DCC681DCFED6800EEBA85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DCC671DCFED6800EEBA85 /* AppDelegate.swift */; };
-		2E7DCC6A1DCFED6800EEBA85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DCC691DCFED6800EEBA85 /* ViewController.swift */; };
 		2E7DCC6F1DCFED6800EEBA85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7DCC6E1DCFED6800EEBA85 /* Assets.xcassets */; };
 		2E7DCC721DCFED6800EEBA85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E7DCC701DCFED6800EEBA85 /* LaunchScreen.storyboard */; };
 		2E7DCC7B1DCFEF3300EEBA85 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DCC7A1DCFEF3300EEBA85 /* NetworkModel.swift */; };
@@ -17,7 +16,9 @@
 		2E7DCC851DCFF12A00EEBA85 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DCC841DCFF12A00EEBA85 /* Constants.swift */; };
 		2E7DCC881DCFF97000EEBA85 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DCC871DCFF97000EEBA85 /* User.swift */; };
 		2E7DCC8A1DCFFF6300EEBA85 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DCC891DCFFF6300EEBA85 /* Person.swift */; };
-		2EC1F7101DD273020071E766 /* ProfileInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1F70F1DD273020071E766 /* ProfileInfoViewController.swift */; };
+		2EDF21D21DD2A54B0082A124 /* ProfileInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDF21D11DD2A54B0082A124 /* ProfileInfoViewController.swift */; };
+		2EE1FD491DD2B424000D4046 /* CaughtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE1FD481DD2B424000D4046 /* CaughtViewController.swift */; };
+		2EE1FD4E1DD2BDCC000D4046 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE1FD4D1DD2BDCC000D4046 /* PersonTableViewCell.swift */; };
 		2EEBFE811DD0CBCC0032A186 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EEBFE801DD0CBCC0032A186 /* Login.storyboard */; };
 		2EEBFE841DD0CC520032A186 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEBFE831DD0CC520032A186 /* LoginViewController.swift */; };
 		2EEBFE861DD0CD6F0032A186 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEBFE851DD0CD6F0032A186 /* RegisterViewController.swift */; };
@@ -33,7 +34,6 @@
 /* Begin PBXFileReference section */
 		2E7DCC641DCFED6800EEBA85 /* PeoplemonSKC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeoplemonSKC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E7DCC671DCFED6800EEBA85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2E7DCC691DCFED6800EEBA85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2E7DCC6E1DCFED6800EEBA85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E7DCC711DCFED6800EEBA85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E7DCC731DCFED6800EEBA85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,7 +43,9 @@
 		2E7DCC841DCFF12A00EEBA85 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Components/Constants.swift; sourceTree = "<group>"; };
 		2E7DCC871DCFF97000EEBA85 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		2E7DCC891DCFFF6300EEBA85 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Person.swift; path = Models/Person.swift; sourceTree = "<group>"; };
-		2EC1F70F1DD273020071E766 /* ProfileInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileInfoViewController.swift; path = ViewControllers/ProfileInfoViewController.swift; sourceTree = "<group>"; };
+		2EDF21D11DD2A54B0082A124 /* ProfileInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileInfoViewController.swift; path = ViewControllers/ProfileInfoViewController.swift; sourceTree = "<group>"; };
+		2EE1FD481DD2B424000D4046 /* CaughtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CaughtViewController.swift; path = ViewControllers/CaughtViewController.swift; sourceTree = "<group>"; };
+		2EE1FD4D1DD2BDCC000D4046 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonTableViewCell.swift; path = ViewControllers/PersonTableViewCell.swift; sourceTree = "<group>"; };
 		2EEBFE801DD0CBCC0032A186 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		2EEBFE831DD0CC520032A186 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewControllers/LoginViewController.swift; sourceTree = "<group>"; };
 		2EEBFE851DD0CD6F0032A186 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = ViewControllers/RegisterViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +111,6 @@
 				2E7DCC861DCFF95900EEBA85 /* Models */,
 				2E7DCC791DCFEF0100EEBA85 /* Networking */,
 				2E7DCC671DCFED6800EEBA85 /* AppDelegate.swift */,
-				2E7DCC691DCFED6800EEBA85 /* ViewController.swift */,
 				2E7DCC6E1DCFED6800EEBA85 /* Assets.xcassets */,
 				2E7DCC701DCFED6800EEBA85 /* LaunchScreen.storyboard */,
 				2E7DCC731DCFED6800EEBA85 /* Info.plist */,
@@ -159,10 +160,12 @@
 		2EEBFE821DD0CC370032A186 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2EDF21D11DD2A54B0082A124 /* ProfileInfoViewController.swift */,
 				2EEBFE831DD0CC520032A186 /* LoginViewController.swift */,
 				2EEBFE851DD0CD6F0032A186 /* RegisterViewController.swift */,
 				2EEBFE8B1DD0D5AE0032A186 /* MapViewController.swift */,
-				2EC1F70F1DD273020071E766 /* ProfileInfoViewController.swift */,
+				2EE1FD481DD2B424000D4046 /* CaughtViewController.swift */,
+				2EE1FD4D1DD2BDCC000D4046 /* PersonTableViewCell.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -309,20 +312,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EC1F7101DD273020071E766 /* ProfileInfoViewController.swift in Sources */,
 				2EEBFE841DD0CC520032A186 /* LoginViewController.swift in Sources */,
 				2EEBFE861DD0CD6F0032A186 /* RegisterViewController.swift in Sources */,
 				2EEBFE901DD0E6C70032A186 /* MapPin.swift in Sources */,
 				2E7DCC7B1DCFEF3300EEBA85 /* NetworkModel.swift in Sources */,
-				2E7DCC6A1DCFED6800EEBA85 /* ViewController.swift in Sources */,
 				2E7DCC7D1DCFEFF500EEBA85 /* WebServices.swift in Sources */,
 				2E7DCC7F1DCFF02B00EEBA85 /* WebServicesExtension.swift in Sources */,
+				2EDF21D21DD2A54B0082A124 /* ProfileInfoViewController.swift in Sources */,
 				2EEBFE8C1DD0D5AE0032A186 /* MapViewController.swift in Sources */,
 				2EEBFE8A1DD0D0F70032A186 /* UserStore.swift in Sources */,
 				2E7DCC681DCFED6800EEBA85 /* AppDelegate.swift in Sources */,
 				2EEBFE881DD0CF1B0032A186 /* Utils.swift in Sources */,
 				2E7DCC851DCFF12A00EEBA85 /* Constants.swift in Sources */,
 				2E7DCC8A1DCFFF6300EEBA85 /* Person.swift in Sources */,
+				2EE1FD491DD2B424000D4046 /* CaughtViewController.swift in Sources */,
+				2EE1FD4E1DD2BDCC000D4046 /* PersonTableViewCell.swift in Sources */,
 				2E7DCC881DCFF97000EEBA85 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

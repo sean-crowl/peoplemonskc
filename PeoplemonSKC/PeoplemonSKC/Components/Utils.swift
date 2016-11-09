@@ -38,4 +38,18 @@ class Utils {
     class func formatNumber(_ amount: Double, prefix: String) -> String {
         return String(format: "\(prefix)$%.2f", abs(amount))
     }
+    
+    class func imageFromString(imageString: String?) -> UIImage? {
+        if let imageString = imageString, let imageData = Data(base64Encoded: imageString, options: .ignoreUnknownCharacters) {
+            return UIImage(data: imageData as Data)
+        }
+        return Images.Avatar.image()
+    }
+    
+    class func stringFromImage(image: UIImage?) -> String {
+        if let image = image, let imageData = UIImagePNGRepresentation(image) {
+            return imageData.base64EncodedString()
+        }
+        return ""
+    }
 }

@@ -12,13 +12,12 @@ import Freddy
 import MapKit
 
 class Person: NetworkModel {
-    var userID: String?
+    var userId: String?
     var userName: String?
     var avatarBase64: String?
     var longitude: Double?
     var latitude: Double?
     var created: String?
-    var caughtUserId: String?
     var radiusInMeters: Double?
     
     enum RequestType {
@@ -30,10 +29,12 @@ class Person: NetworkModel {
     
     var requestType = RequestType.nearby
     
-    required init() {}
+    required init() {
+        requestType = .caught
+    }
     
     required init(json: JSON) throws {
-        self.userID = try? json.getString(at: Constants.Person.userId)
+        self.userId = try? json.getString(at: Constants.Person.userId)
         self.userName = try? json.getString(at: Constants.Person.userName)
         self.avatarBase64 = try? json.getString(at: Constants.Person.avatarBase64)
         self.longitude = try? json.getDouble(at: Constants.Person.longitude)
@@ -52,8 +53,14 @@ class Person: NetworkModel {
         self.requestType = .checkIn
     }
     
+    init(userId: String, radiusInMeters: Double) {
+        self.requestType = .catchPerson
+        self.userId = userId
+        self.radiusInMeters = radiusInMeters
+    }
+    
     init(userID: String, radiusInMeters: Double) {
-        self.userID = userID
+        self.userId = userID
         self.radiusInMeters = radiusInMeters
     }
     
@@ -92,7 +99,7 @@ class Person: NetworkModel {
             params[Constants.Person.longitude] = longitude as AnyObject?
             params[Constants.Person.latitude] = latitude as AnyObject?
         case .catchPerson:
-            params[Constants.Person.caughtUserId] = userID as AnyObject?
+            params[Constants.Person.caughtUserId] = userId as AnyObject?
             params[Constants.Person.radiusInMeters] = radiusInMeters as AnyObject?
         case .caught:
             break
