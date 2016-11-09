@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol UserStoreDelegate: class {
     func userLoggedIn()
@@ -14,6 +15,8 @@ protocol UserStoreDelegate: class {
 
 class UserStore {
     static let shared = UserStore()
+    
+    var selectedImage: UIImage?
     
     var user: User? {
         didSet {

@@ -59,5 +59,9 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Gets your current location for the app</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allows you to take photo for avatar</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allows you to choose photo for avatar</string>
 </dict>
 </plist>

@@ -96,7 +96,7 @@ class MapViewController: UIViewController {
     
     
     // MARK: - IBActions
-    @IBAction func logout(sender: AnyObject) {
+    @IBAction func logoutClicked(sender: AnyObject) {
         UserStore.shared.logout {
             self.performSegue(withIdentifier: "PresentLogin", sender: self)
         }
@@ -137,18 +137,18 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let mapPin = view.annotation as? MapPin, let person = mapPin.person, let name = person.userName, let userId = person.userId {
-            let alert = UIAlertController(title: "Catch User", message: "Catch \(name)?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Catch Peoplemon", message: "Do you with to catch \(name)?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Catch", style: .default, handler: { (action) in
                 let catchPerson = Person(userId: userId, radiusInMeters: Double(Constants.radiusInMeters))
                 WebServices.shared.postObject(catchPerson, completion: { (object, error) in
                     if let error = error {
-                        self.present(Utils.createAlert(message: error), animated: true, completion: nil)
+                        self.present(Utils.createAlert(title: "Error", message: error), animated: true, completion: nil)
                     } else {
-                        self.present(Utils.createAlert(message: "User Caught"), animated: true, completion: nil)
+                        self.present(Utils.createAlert(title: "Caught!", message: "\(name) caught!"), animated: true, completion: nil)
                     }
                 })
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
             self.present(alert, animated: true, completion: nil)
         }
     }

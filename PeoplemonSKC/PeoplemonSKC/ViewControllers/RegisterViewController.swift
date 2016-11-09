@@ -26,22 +26,22 @@ class RegisterViewController: UIViewController {
 
     @IBAction func registerButtonClicked(_ sender: Any) {
         guard let fullName = fullNameTextField.text, fullName != "" else {
-            present(Utils.createAlert("Login Error", message: "Please provide your name"), animated: true, completion: nil)
+            present(Utils.createAlert(title: "Login Error", message: "Please provide your name"), animated: true, completion: nil)
             return
         }
         
         guard let email = emailTextField.text, email != "" && Utils.isValidEmail(email) else {
-            present(Utils.createAlert("Login Error", message: "Please provide a valid email address"), animated: true, completion: nil)
+            present(Utils.createAlert(title: "Login Error", message: "Please provide a valid email address"), animated: true, completion: nil)
             return
         }
         
         guard let password = passwordTextField.text, password != "" else {
-            present(Utils.createAlert("Login Error", message: "Please provide a password"), animated: true, completion: nil)
+            present(Utils.createAlert(title: "Login Error", message: "Please provide a password"), animated: true, completion: nil)
             return
         }
         
         guard let confirm = confirmPasswordTextField.text, password == confirm else {
-            present(Utils.createAlert("Login Error", message: "Passwords do not match"), animated: true, completion: nil)
+            present(Utils.createAlert(title: "Login Error", message: "Passwords do not match"), animated: true, completion: nil)
             return
         }
         
@@ -53,9 +53,9 @@ class RegisterViewController: UIViewController {
             if success {
                 self.dismiss(animated: true, completion: nil)
             } else if let error = error {
-                self.present(Utils.createAlert(message: error), animated: true, completion: nil)
+                self.present(Utils.createAlert(title: "Error", message: error), animated: true, completion: nil)
             } else {
-                self.present(Utils.createAlert(message: Constants.JSON.unknownError), animated: true, completion: nil)
+                self.present(Utils.createAlert(title: "Error", message: Constants.JSON.unknownError), animated: true, completion: nil)
             }
         }
     }

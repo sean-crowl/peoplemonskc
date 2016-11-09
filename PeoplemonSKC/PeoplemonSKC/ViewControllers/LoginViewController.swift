@@ -40,14 +40,14 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonClicked(_ sender: Any) {
         guard let email = emailTextField.text , email != "" else {
             // show error
-            let alert = Utils.createAlert("Login Error", message: "Please provide a username", dismissButtonTitle: "Close")
+            let alert = Utils.createAlert(title: "Login Error", message: "Please provide a username", dismissButtonTitle: "Close")
             present(alert, animated: true, completion: nil)
             
             return
         }
         
         guard let password = passwordTextField.text , password != "" else {
-            present(Utils.createAlert("Login Error", message: "Please provide a password"), animated: true, completion: nil)
+            present(Utils.createAlert(title: "Login Error", message: "Please provide a password"), animated: true, completion: nil)
             return
         }
         
@@ -58,9 +58,9 @@ class LoginViewController: UIViewController {
             if success {
                 self.dismiss(animated: true, completion: nil)
             } else if let error = error {
-                self.present(Utils.createAlert(message: error), animated: true, completion: nil)
+                self.present(Utils.createAlert(title: "Error", message: error), animated: true, completion: nil)
             } else {
-                self.present(Utils.createAlert(message: Constants.JSON.unknownError), animated: true, completion: nil)
+                self.present(Utils.createAlert(title: "Error", message: Constants.JSON.unknownError), animated: true, completion: nil)
             }
         }
     }
