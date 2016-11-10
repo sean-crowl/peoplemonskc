@@ -14,14 +14,19 @@ class MapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     var updatingLocation = true
-    let latitudeDelta = 0.002
-    let longitudeDelta = 0.002
+    let latitudeDelta = 0.001
+    let longitudeDelta = 0.001
     
     var annotations: [MapPin] = []
     var overlay: MKOverlay?
     var firstLocation = true
     
     var timer: Timer?
+    
+    var nearbyView: UIView!
+    var nearbyCollectionView: UICollectionView!
+    var nearbyPeoplemon: [Person] = []
+    var userOverlay: MKOverlay?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +44,8 @@ class MapViewController: UIViewController {
         mapView.delegate = self
         
         UserStore.shared.delegate = self
+        
+        showNearby()
     }
     
     override func didReceiveMemoryWarning() {
@@ -102,6 +109,62 @@ class MapViewController: UIViewController {
             self.performSegue(withIdentifier: "PresentLogin", sender: self)
         }
     }
+    
+    @IBAction func showNearbyClicked(_ sender: Any) {
+        let person = Person(radiusInMeters: Double(Constants.nearbyRadius))
+        WebServices.shared.getObjects(person) { (objects, error) in
+            if let objects = objects {
+                self.nearbyPeoplemon = objects
+                for person in objects {
+                    if let latitude = person.latitude, let longitude = person.longitude {
+                        person.distance = self.locationManager.location?.distance(from: CLLocation(latitude: latitude, longitude: longitude))
+                    }
+                }
+                self.nearbyPeoplemon = objects.sorted(by: { (person1, person2) -> Bool in
+                    switch (person1.distance, person2.distance) {
+                    case let (distance1?, distance2?):
+                        return distance1 < distance2
+                    case (nil, _?):
+                        return true
+                    default:
+                        return false
+                    }
+                })
+                self.nearbyCollectionView.reloadData()
+            }
+        }
+        UIView.animate(withDuration: 0.8, animations: {
+            self.nearbyView.transform = CGAffineTransform(translationX: 0, y: 0)
+        }, completion: nil)
+    }
+    
+    
+    // MARK: - Nearby stuff
+    func showNearby() {
+        let bounds = UIScreen.main.bounds
+        let width: CGFloat = 196
+        let height: CGFloat = 240
+        
+        nearbyView = UIView(frame: CGRect(x: (bounds.width - width) / 2.0, y: (bounds.height - height) / 2.0, width: width, height: height))
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 60, height: 60)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        nearbyCollectionView = UICollectionView(frame: CGRect(x: 8, y: 8, width: 180, height: 180), collectionViewLayout: layout)
+        nearbyCollectionView.dataSource = self
+        nearbyCollectionView.delegate = self
+        nearbyCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        nearbyCollectionView.isScrollEnabled = false
+        nearbyView.addSubview(nearbyCollectionView)
+        nearbyView.backgroundColor = UIColor.white
+        nearbyCollectionView.backgroundColor = UIColor.clear
+        self.view.addSubview(nearbyView)
+        
+        let translateTransform = CGAffineTransform(translationX: 0, y: bounds.height)
+        nearbyView.transform = translateTransform
+    }
+    
 }
 
 // MARK: - CLLocationManagerDelegate
@@ -130,7 +193,7 @@ extension MapViewController: MKMapViewDelegate {
             if let image = Utils.imageFromString(imageString: UserStore.shared.user?.avatar) {
                 let resizedImage = Utils.resizeImage(image: image, maxSize: 26)
                 pinView?.image = resizedImage
-                pinView?.layer.cornerRadius = 24
+                pinView?.layer.cornerRadius = 20
                 pinView?.contentMode = .scaleAspectFill
                 pinView?.clipsToBounds = true
                 pinView?.layer.borderWidth = 4
@@ -184,7 +247,7 @@ extension MapViewController: MKMapViewDelegate {
         }
     }
     
-   func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         self.overlay = overlay
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
@@ -201,5 +264,28 @@ extension MapViewController: UserStoreDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(startTimer), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         stopTimer()
         startTimer()
+    }
+}
+
+// MARK: - CollectionView
+extension MapViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    private func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return min(nearbyPeoplemon.count, 9)
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath as IndexPath)
+        
+        let person = nearbyPeoplemon[indexPath.row];
+        let imageView = ImageSetup(frame: CGRect(x: 5, y: 5, width: 40, height: 40))
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = Utils.imageFromString(imageString: person.avatarBase64)
+        cell.addSubview(imageView)
+        
+        return cell
     }
 }

@@ -23,24 +23,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="I3F-8h-TIp">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="I3F-8h-TIp">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="I3F-8h-TIp" firstAttribute="leading" secondItem="Ryu-s6-RwV" secondAttribute="leading" id="0hv-Cl-nzv"/>
-                            <constraint firstAttribute="bottom" secondItem="I3F-8h-TIp" secondAttribute="bottom" id="Z23-Eu-JTg"/>
-                            <constraint firstAttribute="trailing" secondItem="I3F-8h-TIp" secondAttribute="trailing" id="cTh-RI-uHS"/>
-                            <constraint firstItem="I3F-8h-TIp" firstAttribute="top" secondItem="fkt-1E-Hp7" secondAttribute="bottom" id="del-Lk-mWo"/>
-                        </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="i8c-GV-LwF">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="dZb-5e-Pxe">
-                            <connections>
-                                <action selector="logoutClickedWithSender:" destination="1nt-rj-xk8" id="QlI-zo-LfV"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Logout" id="dZb-5e-Pxe">
+                                <connections>
+                                    <action selector="logoutClickedWithSender:" destination="1nt-rj-xk8" id="QlI-zo-LfV"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Show Nearby" id="P0U-XY-WT3">
+                                <connections>
+                                    <action selector="showNearbyClicked:" destination="1nt-rj-xk8" id="PTq-na-OSe"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem title="Profile" id="tz6-4f-jVz">
                                 <connections>
@@ -54,6 +57,7 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="I3F-8h-TIp" id="sVH-ht-mi9"/>
                         <segue destination="iAV-kM-LDB" kind="presentation" identifier="PresentLoginNoAnimation" animates="NO" id="WGb-RI-lAN"/>
@@ -62,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i80-or-rT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1311.2" y="53.523238380809602"/>
+            <point key="canvasLocation" x="1310.625" y="52.816901408450704"/>
         </scene>
         <!--Title-->
         <scene sceneID="2HB-Nn-4xQ">
@@ -77,7 +81,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="59"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kan-sv-TUR" id="26c-Yr-6c3">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfz-A8-bmt">

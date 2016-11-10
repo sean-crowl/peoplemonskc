@@ -28,6 +28,7 @@
 		2EEBFE8E1DD0DF120032A186 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EEBFE8D1DD0DF120032A186 /* Main.storyboard */; };
 		2EEBFE901DD0E6C70032A186 /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEBFE8F1DD0E6C70032A186 /* MapPin.swift */; };
 		2EEBFE921DD0FE690032A186 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEBFE911DD0FE690032A186 /* MapKit.framework */; };
+		2EF07B8A1DD521BD0016368B /* ImageSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF07B891DD521BD0016368B /* ImageSetup.swift */; };
 		B947AA53778961D3834EE75B /* Pods_PeoplemonSKC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4C14CB9E2CE4F4D23A3E6A /* Pods_PeoplemonSKC.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		2EEBFE8F1DD0E6C70032A186 /* MapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
 		2EEBFE911DD0FE690032A186 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2EEBFE931DD0FE750032A186 /* PeoplemonSKC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PeoplemonSKC.entitlements; sourceTree = "<group>"; };
+		2EF07B891DD521BD0016368B /* ImageSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSetup.swift; sourceTree = "<group>"; };
 		4B4C14CB9E2CE4F4D23A3E6A /* Pods_PeoplemonSKC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeoplemonSKC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F4E94A2EE913C6DA812D246 /* Pods-PeoplemonSKC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplemonSKC.release.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplemonSKC/Pods-PeoplemonSKC.release.xcconfig"; sourceTree = "<group>"; };
 		96F156057868A9D7F2872A6D /* Pods-PeoplemonSKC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeoplemonSKC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PeoplemonSKC/Pods-PeoplemonSKC.debug.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				2EEBFE8B1DD0D5AE0032A186 /* MapViewController.swift */,
 				2EE1FD481DD2B424000D4046 /* CaughtViewController.swift */,
 				2EE1FD4D1DD2BDCC000D4046 /* PersonTableViewCell.swift */,
+				2EF07B891DD521BD0016368B /* ImageSetup.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				2E7DCC851DCFF12A00EEBA85 /* Constants.swift in Sources */,
 				2E7DCC8A1DCFFF6300EEBA85 /* Person.swift in Sources */,
 				2EE1FD491DD2B424000D4046 /* CaughtViewController.swift in Sources */,
+				2EF07B8A1DD521BD0016368B /* ImageSetup.swift in Sources */,
 				2EE1FD4E1DD2BDCC000D4046 /* PersonTableViewCell.swift in Sources */,
 				2E7DCC881DCFF97000EEBA85 /* User.swift in Sources */,
 			);

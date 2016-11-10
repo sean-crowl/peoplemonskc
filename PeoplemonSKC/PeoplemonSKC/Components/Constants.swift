@@ -17,6 +17,7 @@ struct Constants {
     static let serverImageSize: CGFloat = 80
     static let avatarSize: CGFloat = 120
     static let pinImageSize: CGFloat = 16
+    static let nearbyRadius: CGFloat = 400
     
     struct JSON {
         static let unknownError = "An Unknown Error Has Occurred"

@@ -19,6 +19,7 @@ class Person: NetworkModel {
     var latitude: Double?
     var created: String?
     var radiusInMeters: Double?
+    var distance: Double?
     
     enum RequestType {
         case nearby

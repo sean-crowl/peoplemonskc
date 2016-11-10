@@ -56,7 +56,7 @@ class Utils {
         return ""
     }
     
-    class func resizeImage(image: UIImage, maxSize: CGFloat) -> UIImage {
+  class func resizeImage(image: UIImage, maxSize: CGFloat) -> UIImage {
         let newSize: CGSize!
         if image.size.width > image.size.height {
             newSize = CGSize(width: maxSize, height: maxSize * (image.size.height / image.size.width))
@@ -74,5 +74,5 @@ class Utils {
         let newImage = UIImage(cgImage: context!.makeImage()!)
         UIGraphicsEndImageContext()
         return newImage
-    }
+    } 
 }
