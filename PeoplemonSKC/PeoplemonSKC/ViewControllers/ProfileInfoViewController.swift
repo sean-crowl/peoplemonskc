@@ -26,9 +26,9 @@ class ProfileInfoViewController: UIViewController {
             emailLabel.text = user.email
             
             if let image = Utils.imageFromString(imageString: user.avatar) {
-                avatarView.image = image
+                avatarView.image = Utils.imageFromString(imageString: user.avatar)
             } else {
-                avatarView.image = Images.Avatar.image()
+                avatarView.image = #imageLiteral(resourceName: "question-mark")
             }
             
             // Do any additional setup after loading the view.
@@ -72,6 +72,7 @@ class ProfileInfoViewController: UIViewController {
      */
     
     // MARK: - IBActions
+
     @IBAction func addAvatarClicked(_ sender: Any) {
         let alert = UIAlertController(title: "Picture", message: "Choose a picture type", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
@@ -83,6 +84,7 @@ class ProfileInfoViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+
     @IBAction func saveClicked(_ sender: Any) {
         let name = newNameTextField.text
         

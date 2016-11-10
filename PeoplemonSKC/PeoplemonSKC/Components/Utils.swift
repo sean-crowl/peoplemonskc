@@ -11,6 +11,9 @@ import AFDateHelper
 
 // Step 9: Create file and showError/isValidEmail functions
 class Utils {
+    
+    var imageSet: UIImage?
+    
     class func createAlert(title: String, message: String, dismissButtonTitle: String = "Dismiss") -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: dismissButtonTitle, style: .default, handler: nil))
@@ -43,7 +46,7 @@ class Utils {
         if let imageString = imageString, let imageData = Data(base64Encoded: imageString, options: .ignoreUnknownCharacters) {
             return UIImage(data: imageData as Data)
         }
-        return Images.Avatar.image()
+        return UIImage(named: "question-mark")
     }
     
     class func stringFromImage(image: UIImage?) -> String {
