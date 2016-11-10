@@ -119,18 +119,48 @@ extension MapViewController: CLLocationManagerDelegate {
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
-            return nil
+            let userPin = "userLocation"
+            var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: userPin)
+            if pinView == nil {
+                pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: userPin)
+                pinView?.canShowCallout = false
+            } else {
+                pinView?.annotation = annotation
+            }
+            if let image = Utils.imageFromString(imageString: UserStore.shared.user?.avatar) {
+                let resizedImage = Utils.resizeImage(image: image, maxSize: 26)
+                pinView?.image = resizedImage
+                pinView?.layer.cornerRadius = 24
+                pinView?.contentMode = .scaleAspectFill
+                pinView?.clipsToBounds = true
+                pinView?.layer.borderWidth = 4
+                pinView?.layer.borderColor = UIColor(red: 255, green: 0, blue: 0, alpha: 1).cgColor
+            } else {
+                pinView?.image = nil
+            }
+            return pinView
         }
         
         let reuseId = "pin"
         
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
         if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView!.canShowCallout = false
-            pinView!.animatesDrop = false
+            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView?.canShowCallout = false
         } else {
-            pinView!.annotation = annotation
+            pinView?.annotation = annotation
+        }
+        
+        if let mapPin = annotation as? MapPin {
+            if let image = Utils.imageFromString(imageString: mapPin.person?.avatarBase64) {
+                let resizedImage = Utils.resizeImage(image: image, maxSize: Constants.pinImageSize)
+                pinView?.image = resizedImage
+                pinView?.layer.cornerRadius = Constants.pinImageSize / 2.0
+                pinView?.contentMode = .scaleAspectFill
+                pinView?.clipsToBounds = true
+            } else {
+                pinView?.image = nil
+            }
         }
         
         return pinView

@@ -10,6 +10,7 @@ import UIKit
 
 class PersonTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var avatarView: UIImageView!
     
     
     var person: Person!
@@ -18,5 +19,10 @@ class PersonTableViewCell: UITableViewCell {
         self.person = person
         
         nameLabel.text = person.userName
+        if let image = Utils.imageFromString(imageString: person.avatarBase64) {
+            avatarView.image = image
+        } else {
+            avatarView.image = UIImage(named: "question-mark")
+        }
     }
 }

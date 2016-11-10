@@ -88,7 +88,7 @@ class ProfileInfoViewController: UIViewController {
     @IBAction func saveClicked(_ sender: Any) {
         let name = newNameTextField.text
         
-        let resizedImage = Utils.resizeImage(image: avatarView.image!)
+        let resizedImage = Utils.resizeImage(image: avatarView.image!, maxSize: Constants.avatarSize)
         let imageString = Utils.stringFromImage(image: resizedImage)
         let user = User(fullName: name!, avatar: imageString)
         

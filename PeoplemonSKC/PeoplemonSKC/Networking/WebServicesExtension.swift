@@ -19,7 +19,12 @@ extension WebServices {
     
     // Step 6: Create generic functions for creating an object as well as getting back an array of objects
     func postObject<T: NetworkModel>(_ model: T, completion: @escaping (_ object: T?, _ error: String?) -> Void) {
+        print("\(model.toDictionary())")
         request(AuthRouter.restRequest(model)).responseJSON { (response) in
+            print("\(response.response?.statusCode)")
+            if let data = response.data, let dataString = String(data: data, encoding: .utf8) {
+                print("response: \(dataString)")
+            }
             WebServices.parseResponseObject(response: response, completion: completion)
         }
     }
