@@ -90,6 +90,7 @@ class ProfileInfoViewController: UIViewController {
         
         let resizedImage = Utils.resizeImage(image: avatarView.image!, maxSize: Constants.avatarSize)
         let imageString = Utils.stringFromImage(image: resizedImage)
+        
         let user = User(fullName: name!, avatar: imageString)
         
         MBProgressHUD.showAdded(to: view, animated: true)

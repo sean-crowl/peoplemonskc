@@ -10,6 +10,8 @@ def sharedPods
     pod 'MBProgressHUD', '~> 0.9.1'
     pod 'AFDateHelper', '~> 3.5'
     pod 'SnapKit', '~> 3.0'
+    pod 'syncano-ios'  
+    pod 'JSQMessagesViewController'
 end
 
 target ‘PeoplemonSKC’ do

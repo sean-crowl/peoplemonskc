@@ -245,7 +245,7 @@ extension MapViewController: MKMapViewDelegate {
                 pinView?.image = nil
             }
         }
-        
+    
         return pinView
     }
     

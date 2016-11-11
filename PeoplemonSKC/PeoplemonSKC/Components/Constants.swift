@@ -51,5 +51,6 @@ struct Constants {
         static let caughtUserId = "CaughtUserId"
         static let avatarBase64 = "AvatarBase64"
     }
+
 }
 

@@ -79,7 +79,7 @@
             </objects>
             <point key="canvasLocation" x="1310.625" y="52.816901408450704"/>
         </scene>
-        <!--Title-->
+        <!--Caught Peoplemon-->
         <scene sceneID="2HB-Nn-4xQ">
             <objects>
                 <tableViewController id="JoD-UQ-FA7" customClass="CaughtViewController" customModule="PeoplemonSKC" customModuleProvider="target" sceneMemberID="viewController">
@@ -92,7 +92,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="59"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kan-sv-TUR" id="26c-Yr-6c3">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="58.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfz-A8-bmt">
@@ -119,7 +119,7 @@
                             <outlet property="delegate" destination="JoD-UQ-FA7" id="UX2-9q-2W4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="Ag4-Ox-hHG">
+                    <navigationItem key="navigationItem" title="Caught Peoplemon" id="Ag4-Ox-hHG">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="9uu-5c-mB5">
                             <connections>
                                 <segue destination="1nt-rj-xk8" kind="show" id="U8b-A9-VDN"/>
@@ -273,7 +273,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="U8b-A9-VDN"/>
         <segue reference="z95-UR-Ehf"/>
+        <segue reference="U8b-A9-VDN"/>
     </inferredMetricsTieBreakers>
 </document>

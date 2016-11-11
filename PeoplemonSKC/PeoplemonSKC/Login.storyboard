@@ -62,15 +62,24 @@
                                     <action selector="loginButtonClicked:" destination="acv-m5-vUg" eventType="touchUpInside" id="hqv-kf-bwe"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="PEOPLEMON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7C0-5m-9DS">
+                                <rect key="frame" x="16" y="80" width="343" height="59"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="32"/>
+                                <color key="textColor" red="0.21960784489999999" green="0.0078431377190000002" blue="0.85490196939999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TSp-Ak-NGe" firstAttribute="leading" secondItem="Wz8-Rm-beL" secondAttribute="leadingMargin" id="5if-fV-Hm2"/>
                             <constraint firstItem="dYQ-LE-g99" firstAttribute="leading" secondItem="Wz8-Rm-beL" secondAttribute="leadingMargin" id="AjL-aX-i0t"/>
                             <constraint firstItem="58H-kx-WBV" firstAttribute="trailing" secondItem="Wz8-Rm-beL" secondAttribute="trailingMargin" id="BPR-c4-w7r"/>
+                            <constraint firstItem="7C0-5m-9DS" firstAttribute="top" secondItem="AcO-Vc-ZRg" secondAttribute="bottom" constant="16" id="CGD-2n-QeF"/>
                             <constraint firstItem="58H-kx-WBV" firstAttribute="top" secondItem="TSp-Ak-NGe" secondAttribute="bottom" constant="18" id="Jbp-nu-M1k"/>
                             <constraint firstItem="npg-Nu-Hv0" firstAttribute="leading" secondItem="Wz8-Rm-beL" secondAttribute="leadingMargin" id="KZs-lW-Hg0"/>
+                            <constraint firstItem="7C0-5m-9DS" firstAttribute="trailing" secondItem="Wz8-Rm-beL" secondAttribute="trailingMargin" id="Kad-ho-v8k"/>
                             <constraint firstItem="npg-Nu-Hv0" firstAttribute="trailing" secondItem="Wz8-Rm-beL" secondAttribute="trailingMargin" id="Qf5-ov-Qtp"/>
+                            <constraint firstItem="7C0-5m-9DS" firstAttribute="leading" secondItem="Wz8-Rm-beL" secondAttribute="leadingMargin" id="VS3-jD-t0i"/>
                             <constraint firstItem="TSp-Ak-NGe" firstAttribute="trailing" secondItem="Wz8-Rm-beL" secondAttribute="trailingMargin" id="Wlf-zL-1CB"/>
                             <constraint firstItem="TSp-Ak-NGe" firstAttribute="top" secondItem="npg-Nu-Hv0" secondAttribute="bottom" constant="15" id="XDu-Do-VC7"/>
                             <constraint firstItem="npg-Nu-Hv0" firstAttribute="top" secondItem="AcO-Vc-ZRg" secondAttribute="bottom" constant="92" id="Y7F-GF-F0J"/>
