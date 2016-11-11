@@ -24,26 +24,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="I3F-8h-TIp">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="108" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ka2-z9-1d7">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="Rid-CB-Gds">
+                                        <barButtonItem key="leftBarButtonItem" title="Show Nearby" id="P0U-XY-WT3">
+                                            <connections>
+                                                <action selector="showNearbyClicked:" destination="1nt-rj-xk8" id="PTq-na-OSe"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Close Nearby" id="tJY-eK-8ge">
+                                            <connections>
+                                                <action selector="closeNearby:" destination="1nt-rj-xk8" id="0hO-C6-TQV"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="i8c-GV-LwF">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Logout" id="dZb-5e-Pxe">
-                                <connections>
-                                    <action selector="logoutClickedWithSender:" destination="1nt-rj-xk8" id="QlI-zo-LfV"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Show Nearby" id="P0U-XY-WT3">
-                                <connections>
-                                    <action selector="showNearbyClicked:" destination="1nt-rj-xk8" id="PTq-na-OSe"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                    <navigationItem key="navigationItem" title="Peoplemon" id="i8c-GV-LwF">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="dZb-5e-Pxe">
+                            <connections>
+                                <action selector="logoutClickedWithSender:" destination="1nt-rj-xk8" id="QlI-zo-LfV"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Profile" id="tz6-4f-jVz">
                                 <connections>
@@ -81,7 +92,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="59"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kan-sv-TUR" id="26c-Yr-6c3">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="58.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfz-A8-bmt">

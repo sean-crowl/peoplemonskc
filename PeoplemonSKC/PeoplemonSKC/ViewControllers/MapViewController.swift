@@ -14,8 +14,8 @@ class MapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     var updatingLocation = true
-    let latitudeDelta = 0.001
-    let longitudeDelta = 0.001
+    let latitudeDelta = 0.0025
+    let longitudeDelta = 0.0025
     
     var annotations: [MapPin] = []
     var overlay: MKOverlay?
@@ -28,6 +28,8 @@ class MapViewController: UIViewController {
     var nearbyPeoplemon: [Person] = []
     var userOverlay: MKOverlay?
     
+    var personOverlay: MKOverlay?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +39,7 @@ class MapViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         mapView.showsUserLocation = true
-        mapView.isZoomEnabled = false
+        mapView.isZoomEnabled = true
         mapView.isScrollEnabled = false
         locationManager.startUpdatingLocation()
         
@@ -138,33 +140,45 @@ class MapViewController: UIViewController {
         }, completion: nil)
     }
     
+    @IBAction func closeNearby(_ sender: Any) {
+        UIView.animate(withDuration: 0.8, animations: {
+            self.nearbyView.transform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height)
+        }, completion: nil)
+}
+
+// MARK: - Nearby stuff
+func showNearby() {
+    let bounds = UIScreen.main.bounds
+    let width: CGFloat = 196
+    let height: CGFloat = 240
     
-    // MARK: - Nearby stuff
-    func showNearby() {
-        let bounds = UIScreen.main.bounds
-        let width: CGFloat = 196
-        let height: CGFloat = 240
-        
-        nearbyView = UIView(frame: CGRect(x: (bounds.width - width) / 2.0, y: (bounds.height - height) / 2.0, width: width, height: height))
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 60, height: 60)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        nearbyCollectionView = UICollectionView(frame: CGRect(x: 8, y: 8, width: 180, height: 180), collectionViewLayout: layout)
-        nearbyCollectionView.dataSource = self
-        nearbyCollectionView.delegate = self
-        nearbyCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-        nearbyCollectionView.isScrollEnabled = false
-        nearbyView.addSubview(nearbyCollectionView)
-        nearbyView.backgroundColor = UIColor.white
-        nearbyCollectionView.backgroundColor = UIColor.clear
-        self.view.addSubview(nearbyView)
-        
-        let translateTransform = CGAffineTransform(translationX: 0, y: bounds.height)
-        nearbyView.transform = translateTransform
+    nearbyView = UIView(frame: CGRect(x: (bounds.width - width) / 2.0, y: (bounds.height - height) / 2.0, width: width, height: height))
+    let layout = UICollectionViewFlowLayout()
+    layout.itemSize = CGSize(width: 60, height: 60)
+    layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    layout.minimumLineSpacing = 0
+    layout.minimumInteritemSpacing = 0
+    nearbyCollectionView = UICollectionView(frame: CGRect(x: 8, y: 8, width: 180, height: 180), collectionViewLayout: layout)
+    nearbyCollectionView.dataSource = self
+    nearbyCollectionView.delegate = self
+    nearbyCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+    nearbyCollectionView.isScrollEnabled = false
+    nearbyView.addSubview(nearbyCollectionView)
+    nearbyView.backgroundColor = UIColor.white
+    nearbyCollectionView.backgroundColor = UIColor.clear
+    self.view.addSubview(nearbyView)
+    
+    let translateTransform = CGAffineTransform(translationX: 0, y: bounds.height)
+    nearbyView.transform = translateTransform
+}
+    
+    func removePersonOverlay() {
+        if let personOverlay = personOverlay {
+            mapView.remove(personOverlay)
+            self.personOverlay = nil
+        }
     }
-    
+
 }
 
 // MARK: - CLLocationManagerDelegate
@@ -175,6 +189,12 @@ extension MapViewController: CLLocationManagerDelegate {
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpanMake(latitudeDelta, longitudeDelta))
         mapView.setRegion(region, animated: true)
         updatingLocation = true
+        
+        if let userOverlay = userOverlay {
+            mapView.remove(userOverlay)
+        }
+        userOverlay = MKCircle(center: center, radius: CLLocationDistance(Constants.radiusInMeters))
+        mapView.add(userOverlay!)
     }
 }
 
@@ -248,12 +268,16 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        self.overlay = overlay
-        let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
-        renderer.lineWidth = 5.0
-        renderer.lineCap = CGLineCap.round
-        return renderer
+        let circleOverlay = MKCircleRenderer(overlay: overlay)
+        if let userOverlay = userOverlay, userOverlay.coordinate.latitude == overlay.coordinate.latitude && userOverlay.coordinate.longitude == overlay.coordinate.longitude {
+            circleOverlay.lineWidth = 1
+            circleOverlay.strokeColor = UIColor.blue
+            circleOverlay.fillColor = UIColor.blue.withAlphaComponent(0.5)
+        } else {
+            circleOverlay.lineWidth = 0
+            circleOverlay.fillColor = UIColor.blue.withAlphaComponent(0.25)
+        }
+        return circleOverlay
     }
 }
 
@@ -281,11 +305,25 @@ extension MapViewController: UICollectionViewDelegate, UICollectionViewDataSourc
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath as IndexPath)
         
         let person = nearbyPeoplemon[indexPath.row];
-        let imageView = ImageSetup(frame: CGRect(x: 5, y: 5, width: 40, height: 40))
+        let imageView = ImageSetup(frame: CGRect(x: 5, y: 5, width: 30, height: 30))
         imageView.contentMode = .scaleAspectFill
         imageView.image = Utils.imageFromString(imageString: person.avatarBase64)
         cell.addSubview(imageView)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let person = nearbyPeoplemon[indexPath.row]
+        if let lat = person.latitude, let long = person.longitude {
+            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            if let selectedOverlay = personOverlay {
+                mapView.remove(selectedOverlay)
+            }
+            personOverlay = MKCircle(center: coordinate, radius: 50)
+            mapView.add(personOverlay!)
+            let _ = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(removePersonOverlay), userInfo: nil, repeats: false)
+            closeNearby(sender: self)
+        }
     }
 }
